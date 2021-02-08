@@ -9,7 +9,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EditBookComponent } from "./edit-book/edit-book.component";
 import { EditReaderComponent } from "./edit-reader/edit-reader.component";
-import { CoreModule } from './core/core.module';
+import { CoreModule } from "./core/core.module";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,13 @@ import { CoreModule } from './core/core.module';
     EditBookComponent,
     AddReaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CoreModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    CoreModule,
+    HttpClientModule,
+  ],
   providers: [
     // {
     //   provide: LoggerService,

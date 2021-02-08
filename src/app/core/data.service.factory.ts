@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { DataService } from "./data.service";
 import { LoggerService } from './logger.service';
 
