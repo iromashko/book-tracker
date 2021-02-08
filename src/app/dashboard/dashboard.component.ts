@@ -18,7 +18,9 @@ export class DashboardComponent implements OnInit {
   constructor(
     private loggerService: LoggerService,
     private dataService: DataService
-  ) {}
+  ) {
+    this.loggerService.log("Creating the dashboard!");
+  }
 
   ngOnInit() {
     this.allBooks = this.dataService.getAllBooks();

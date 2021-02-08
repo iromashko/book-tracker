@@ -1,12 +1,10 @@
 import { Injectable } from "@angular/core";
 import { allBooks, allReaders } from "app/data";
-import { Book } from 'app/models/book';
+import { Book } from "app/models/book";
 import { Reader } from "app/models/reader";
 import { LoggerService } from "./logger.service";
 
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class DataService {
   public mostPopularBook: Book = allBooks[0];
 
@@ -25,7 +23,7 @@ export class DataService {
   }
 
   getBookById(id: number): Book {
-    return allBooks.find(book => book.bookID === id);
+    return allBooks.find((book) => book.bookID === id);
   }
 
   setMostPopularBook(popularBook: Book): void {
