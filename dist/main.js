@@ -333,6 +333,46 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/core/book-tracker-error-handler.service.ts":
+/*!************************************************************!*\
+  !*** ./src/app/core/book-tracker-error-handler.service.ts ***!
+  \************************************************************/
+/*! exports provided: BookTrackerErrorHandlerService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BookTrackerErrorHandlerService", function() { return BookTrackerErrorHandlerService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var app_models_bookTrackerError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! app/models/bookTrackerError */ "./src/app/models/bookTrackerError.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var BookTrackerErrorHandlerService = /** @class */ (function () {
+    function BookTrackerErrorHandlerService() {
+    }
+    BookTrackerErrorHandlerService.prototype.handleError = function (error) {
+        var customError = new app_models_bookTrackerError__WEBPACK_IMPORTED_MODULE_1__["BookTrackerError"]();
+        customError.errorNumber = 200;
+        customError.message = error.message;
+        customError.friendlyMessage = "An error occured. Please try again.";
+        console.log(customError);
+    };
+    BookTrackerErrorHandlerService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])()
+    ], BookTrackerErrorHandlerService);
+    return BookTrackerErrorHandlerService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/core/core.module.ts":
 /*!*************************************!*\
   !*** ./src/app/core/core.module.ts ***!
@@ -348,6 +388,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _logger_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./logger.service */ "./src/app/core/logger.service.ts");
 /* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./data.service */ "./src/app/core/data.service.ts");
 /* harmony import */ var _module_import_guard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./module-import-guard */ "./src/app/core/module-import-guard.ts");
+/* harmony import */ var _book_tracker_error_handler_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./book-tracker-error-handler.service */ "./src/app/core/book-tracker-error-handler.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -365,6 +406,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
+
 var CoreModule = /** @class */ (function () {
     function CoreModule(parentModule) {
         Object(_module_import_guard__WEBPACK_IMPORTED_MODULE_4__["throwIfAlreadyLoaded"])(parentModule, "CoreModule");
@@ -374,7 +416,14 @@ var CoreModule = /** @class */ (function () {
             imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]],
             declarations: [],
             exports: [],
-            providers: [_logger_service__WEBPACK_IMPORTED_MODULE_2__["LoggerService"], _data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"]],
+            providers: [
+                _logger_service__WEBPACK_IMPORTED_MODULE_2__["LoggerService"],
+                _data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"],
+                {
+                    provide: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ErrorHandler"],
+                    useClass: _book_tracker_error_handler_service__WEBPACK_IMPORTED_MODULE_5__["BookTrackerErrorHandlerService"],
+                },
+            ],
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()), __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SkipSelf"])()),
         __metadata("design:paramtypes", [CoreModule])
@@ -552,8 +601,9 @@ module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var app_core_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! app/core/data.service */ "./src/app/core/data.service.ts");
-/* harmony import */ var app_core_logger_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! app/core/logger.service */ "./src/app/core/logger.service.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var app_core_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! app/core/data.service */ "./src/app/core/data.service.ts");
+/* harmony import */ var app_core_logger_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! app/core/logger.service */ "./src/app/core/logger.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -601,10 +651,12 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent(loggerService, dataService) {
+    function DashboardComponent(loggerService, dataService, title) {
         this.loggerService = loggerService;
         this.dataService = dataService;
+        this.title = title;
         this.loggerService.log("Creating the dashboard!");
     }
     DashboardComponent.prototype.ngOnInit = function () {
@@ -615,7 +667,9 @@ var DashboardComponent = /** @class */ (function () {
         this.getAuthorRecommendationAsync(1).catch(function (err) {
             return _this.loggerService.error(err);
         });
+        this.title.setTitle("Book Tracker " + _angular_core__WEBPACK_IMPORTED_MODULE_0__["VERSION"].full);
         this.loggerService.log("Done with dashboard initialization");
+        throw new Error("Ugly technical error!");
     };
     DashboardComponent.prototype.getAuthorRecommendationAsync = function (readerID) {
         return __awaiter(this, void 0, void 0, function () {
@@ -643,8 +697,9 @@ var DashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
             styles: [],
         }),
-        __metadata("design:paramtypes", [app_core_logger_service__WEBPACK_IMPORTED_MODULE_2__["LoggerService"],
-            app_core_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
+        __metadata("design:paramtypes", [app_core_logger_service__WEBPACK_IMPORTED_MODULE_3__["LoggerService"],
+            app_core_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["Title"]])
     ], DashboardComponent);
     return DashboardComponent;
 }());
