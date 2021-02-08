@@ -14,7 +14,7 @@ export class AddReaderComponent implements OnInit {
   ngOnInit() { }
 
   saveReader(formValues: any): void {
-    let newReader: Reader = formValues;
+    let newReader: Reader = <Reader>formValues;
     newReader.readerID = 0;
     console.log(newReader);
     console.warn('Save new reader not yet implemented.');
