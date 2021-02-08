@@ -13,6 +13,18 @@ import { LoggerService } from "./logger.service";
 export class DataService {
   public mostPopularBook: Book = allBooks[0];
 
+  getAuthorRecommendation(readerID: number): Promise<string> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (readerID > 0) {
+          resolve("Dr. Seuss");
+        } else {
+          reject("Invalid reader ID");
+        }
+      }, 2000);
+    });
+  }
+
   constructor(
     private loggerService: LoggerService,
     private http?: HttpClient

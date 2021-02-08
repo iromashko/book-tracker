@@ -5,7 +5,6 @@ import { LoggerService } from "app/core/logger.service";
 import { Book } from "app/models/book";
 import { BookTrackerError } from "app/models/bookTrackerError";
 import { Reader } from "app/models/reader";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-dashboard",
@@ -33,7 +32,18 @@ export class DashboardComponent implements OnInit {
     );
     this.mostPopularBook = this.dataService.mostPopularBook;
 
+    this.getAuthorRecommendationAsync(1).catch((err) =>
+      this.loggerService.error(err)
+    );
+
     this.loggerService.log("Done with dashboard initialization");
+  }
+
+  private async getAuthorRecommendationAsync(readerID: number): Promise<void> {
+    let author: string = await this.dataService.getAuthorRecommendation(
+      readerID
+    );
+    this.loggerService.log(author);
   }
 
   deleteBook(bookID: number): void {
